@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>ngMultiplication Table</title>
-    <script type="text/javascript" src=""></script>
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   </head>
-  <body ng-controller="myController as myCtrl">
-    <table ng-controller="myController as myCtrl">
-      <tr ng-repeat="numberA in myCtrl.numbers">
-        <td ng-repeat="numberB in myCtrl.numbers">
-          {{ numberA * numberB }}
-        </td>
-      </tr>
-    </table>
+  <body>
+    <div ng-controller="myController as vm" initial-number-limit="10">
+      <input type="number" ng-model="vm.numberLimit" placeholder="Enter a number" />
+      <table>
+        <tr ng-repeat="numberA in vm.numbers()">
+          <td ng-repeat="numberB in vm.numbers()">
+            {{ vm.compute(numberA,numberB) }}
+          </td>
+        </tr>
+      </table>
+    </div>
     <script src="js/script.js" type="text/javascript"></script>
   </body>
 </html>
